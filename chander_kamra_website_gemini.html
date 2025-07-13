@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chander Prakash Kamra - Energy Consultant</title>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons (like LinkedIn) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" xintegrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        /* CSS Variables for easy theme management */
+        :root {
+            --primary-green: #28a745;
+            --primary-green-dark: #218838;
+            --dark-text: #333;
+            --light-text: #f8f9fa;
+            --body-bg: #ffffff;
+            --section-bg: #f8f9fa;
+            --border-color: #dee2e6;
+        }
+
+        /* Basic Reset and Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 70px; /* Offset for fixed header */
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--body-bg);
+            color: var(--dark-text);
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        /* Container for centered content */
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--dark-text);
+        }
+
+        /* --- Header / Navigation --- */
+        .main-header {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .main-header.scrolled {
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .main-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--dark-text);
+            text-decoration: none;
+        }
+
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .main-nav li {
+            margin-left: 25px;
+        }
+
+        .main-nav a {
+            text-decoration: none;
+            color: var(--dark-text);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .main-nav a:hover, .main-nav a.active {
+            color: var(--primary-green);
+        }
+        
+        /* Mobile Nav Toggle */
+        .nav-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                        url('pexels-pixabay-247763.jpg') no-repeat center center/cover;
+            height: 100vh;
+            color: var(--light-text);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            max-width: 800px;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .btn {
+            background-color: var(--primary-green);
+            color: #fff;
+            padding: 15px 35px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-green-dark);
+            transform: translateY(-2px);
+        }
+
+        /* --- General Section Styling --- */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-bg {
+            background-color: var(--section-bg);
+        }
+
+        /* --- About Section --- */
+        #about .about-content {
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        #about .about-text {
+            flex: 1;
+        }
+
+        .btn-linkedin {
+            background-color: #0077b5;
+            margin-top: 1rem;
+        }
+        .btn-linkedin:hover {
+            background-color: #005582;
+        }
+
+        /* --- Services & Industries Section --- */
+        .grid-layout {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .card {
+            background-color: var(--body-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+        }
+
+        .card h3 {
+            color: var(--primary-green);
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+
+        /* --- Audit Methodology Section --- */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .timeline-item {
+            padding: 20px 40px;
+            position: relative;
+            background: var(--body-bg);
+            border-left: 3px solid var(--primary-green);
+            margin-bottom: 20px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .timeline-item::before {
+            content: attr(data-step);
+            position: absolute;
+            left: -21.5px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--primary-green);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            border: 3px solid white;
+        }
+        
+        .timeline-item h3 {
+            margin-top: 0;
+        }
+
+        /* --- Projects Section --- */
+        .project-highlight {
+            background: var(--body-bg);
+            border-left: 4px solid var(--primary-green);
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: 4px;
+        }
+
+        /* --- Contact Section --- */
+        .contact-wrapper {
+            display: flex;
+            gap: 3rem;
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        
+        .contact-form {
+            flex: 2;
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+        }
+        
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-green);
+            box-shadow: 0 0 0 2px rgba(40, 167, 69, 0.2);
+        }
+        
+        .consent-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .consent-group input {
+            width: auto;
+        }
+
+        .contact-info h3 {
+            margin-top: 0;
+            color: var(--primary-green);
+        }
+
+        .contact-info ul {
+            list-style: none;
+            padding: 0;
+        }
+        .contact-info li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .contact-info i {
+            color: var(--primary-green);
+            font-size: 1.2rem;
+            width: 20px;
+            text-align: center;
+        }
+        .contact-info a {
+            color: var(--dark-text);
+            text-decoration: none;
+        }
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        /* --- Footer --- */
+        .main-footer {
+            background-color: var(--dark-text);
+            color: var(--light-text);
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 60px;
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 768px) {
+            .main-nav {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background-color: white;
+                position: absolute;
+                top: 70px; /* Height of header */
+                left: 0;
+                padding: 1rem 0;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            }
+            
+            .main-nav.active {
+                display: flex;
+            }
+
+            .main-nav ul {
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+            }
+
+            .main-nav li {
+                margin: 10px 0;
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-toggle {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+
+            #about .about-content, .contact-wrapper {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="main-header" id="main-header">
+        <div class="container">
+            <a href="#hero" class="logo">Chander Prakash Kamra</a>
+            <nav class="main-nav" id="main-nav">
+                <ul>
+                    <li><a href="#hero" class="nav-link">Home</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#services" class="nav-link">Services</a></li>
+                    <li><a href="#industries" class="nav-link">Industries</a></li>
+                    <li><a href="#approach" class="nav-link">Approach</a></li>
+                    <li><a href="#projects" class="nav-link">Projects</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="nav-toggle" id="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="hero">
+            <h1>Expert Energy Consulting for Industrial Efficiency</h1>
+            <p>Reduce costs, improve process performance, and unlock energy savings.</p>
+            <a href="#contact" class="btn">Schedule a Free Consultation</a>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section container">
+            <h2>About Chander Prakash Kamra</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Chander Prakash Kamra is a seasoned Energy Consultant with expertise across ceramics, textiles, and process industries. His work is grounded in field instrumentation, real-world plant experience, and result-driven strategy.</p>
+                    <a href="https://linkedin.com/in/chander-kamra-3b879314" target="_blank" rel="noopener noreferrer" class="btn btn-linkedin">
+                        <i class="fab fa-linkedin"></i> View LinkedIn Profile
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="section section-bg">
+            <div class="container">
+                <h2>Services Offered</h2>
+                <div class="grid-layout">
+                    <div class="card">
+                        <h3>Energy Audits</h3>
+                        <p>In-depth process and utility audits, including SEC benchmarking and loss analysis to identify savings opportunities.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Electrical System Analysis</h3>
+                        <p>Comprehensive analysis of load, power factor, and VFDs to optimize electrical energy consumption.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Waste Heat Recovery</h3>
+                        <p>Designing and implementing solutions for recovering waste heat from kilns, dryers, and flue gas systems.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Implementation Support</h3>
+                        <p>Providing technical specifications, ROI calculations, and a clear roadmap for project implementation.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Industries Served Section -->
+        <section id="industries" class="section">
+            <div class="container">
+                <h2>Industries Served</h2>
+                <div class="grid-layout">
+                    <div class="card"><h3>Ceramics & Tiles</h3></div>
+                    <div class="card"><h3>Wood Panels (Plywood, MDF)</h3></div>
+                    <div class="card"><h3>Textiles & Garments</h3></div>
+                    <div class="card"><h3>Paper & Pulp</h3></div>
+                    <div class="card"><h3>Agro & Food Processing</h3></div>
+                    <div class="card"><h3>Chemicals & Resins</h3></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Audit Methodology Section -->
+        <section id="approach" class="section section-bg">
+            <div class="container">
+                <h2>Our Audit Methodology</h2>
+                <ol class="timeline">
+                    <li class="timeline-item" data-step="1"><h3>Pre-Audit Planning</h3><p>Collaborating with your team to define scope, objectives, and gather preliminary data.</p></li>
+                    <li class="timeline-item" data-step="2"><h3>On-Site Diagnostics</h3><p>Conducting detailed fieldwork with advanced instrumentation to measure and map energy flows.</p></li>
+                    <li class="timeline-item" data-step="3"><h3>SEC Benchmarking & Analysis</h3><p>Analyzing data to benchmark Specific Energy Consumption (SEC) against industry standards.</p></li>
+                    <li class="timeline-item" data-step="4"><h3>Recommendations with ROI</h3><p>Presenting clear, actionable recommendations complete with technical details and ROI analysis.</p></li>
+                    <li class="timeline-item" data-step="5"><h3>Final Report & Roadmap</h3><p>Delivering a comprehensive report and a strategic roadmap for phased implementation.</p></li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section">
+            <div class="container">
+                <h2>Project & Case Study Highlights</h2>
+                <div class="project-highlight">
+                    <p>Successfully completed comprehensive ceramic plant energy audits across India and Africa, leading to significant cost savings.</p>
+                </div>
+                <div class="project-highlight">
+                    <p>Designed and assessed Waste Heat Recovery (WHR) systems in various kiln-based industrial setups.</p>
+                </div>
+                <div class="project-highlight">
+                    <p>Executed compressed air system optimization projects in large-scale textile units, reducing electrical load.</p>
+                </div>
+                <div class="project-highlight">
+                    <p>Performed detailed energy mapping and balancing for complex resin and chemical manufacturing plants.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <div class="container">
+                <h2>Get In Touch</h2>
+                <div class="contact-wrapper">
+                    <div class="contact-form">
+                        <h3>Send a Message</h3>
+                        <form action="https://formspree.io/f/YOUR_EMAIL_HERE" method="POST">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="company">Company</label>
+                                <input type="text" id="company" name="company">
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" rows="5" required></textarea>
+                            </div>
+                            <div class="form-group consent-group">
+                                <input type="checkbox" id="consent" name="consent" required>
+                                <label for="consent">I consent to having this website store my submitted information so they can respond to my inquiry.</label>
+                            </div>
+                            <button type="submit" class="btn">Submit</button>
+                        </form>
+                    </div>
+                    <div class="contact-info">
+                        <h3>Contact Information</h3>
+                        <ul>
+                            <li><i class="fas fa-envelope"></i> <a href="mailto:kamracp@gmail.com">kamracp@gmail.com</a></li>
+                            <li><i class="fas fa-phone"></i> <a href="tel:+919819536221">+91-9819536221</a></li>
+                            <li><i class="fas fa-map-marker-alt"></i> Chandigarh, India</li>
+                            <li><i class="fab fa-linkedin"></i> <a href="https://linkedin.com/in/chander-kamra-3b879314" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 Chander Prakash Kamra | All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const header = document.getElementById('main-header');
+            const navToggle = document.getElementById('nav-toggle');
+            const mainNav = document.getElementById('main-nav');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            // Add shadow to header on scroll
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // Toggle mobile navigation
+            navToggle.addEventListener('click', () => {
+                mainNav.classList.toggle('active');
+            });
+
+            // Close mobile nav when a link is clicked
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (mainNav.classList.contains('active')) {
+                        mainNav.classList.remove('active');
+                    }
+                });
+            });
+            
+            // Active link highlighting on scroll
+            const sections = document.querySelectorAll('section[id]');
+            window.addEventListener('scroll', navHighlighter);
+
+            function navHighlighter() {
+                let scrollY = window.pageYOffset;
+                sections.forEach(current => {
+                    const sectionHeight = current.offsetHeight;
+                    const sectionTop = current.offsetTop - 80;
+                    let sectionId = current.getAttribute('id');
+                    
+                    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                        document.querySelector('.main-nav a[href*=' + sectionId + ']').classList.add('active');
+                    } else {
+                        document.querySelector('.main-nav a[href*=' + sectionId + ']').classList.remove('active');
+                    }
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>

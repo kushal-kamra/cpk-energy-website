@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chander Prakash Kamra | Energy Consultant</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2d5a27;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #2d5a27;
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: #333;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(45, 90, 39, 0.7), rgba(45, 90, 39, 0.7)),
+                        url('pexels-pixabay-247763.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #2d5a27;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 5rem 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #2d5a27;
+        }
+
+        .section p {
+            font-size: 1.1rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* About Section */
+        .about-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .linkedin-btn {
+            margin-top: 2rem;
+            background: #0077b5;
+            color: white;
+        }
+
+        .linkedin-btn:hover {
+            background: #005885;
+        }
+
+        /* Services Section */
+        .services {
+            background: #f8f9fa;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card h3 {
+            color: #2d5a27;
+            margin-bottom: 1rem;
+        }
+
+        /* Industries Section */
+        .industries-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .industry-item {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 500;
+            color: #2d5a27;
+            border-left: 4px solid #4CAF50;
+        }
+
+        /* Methodology Section */
+        .methodology {
+            background: #f8f9fa;
+        }
+
+        .methodology-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .step {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .step-number {
+            background: #4CAF50;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin: 0 auto 1rem auto;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 4px solid #4CAF50;
+        }
+
+        .project-card h3 {
+            color: #2d5a27;
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: #f8f9fa;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 4rem;
+            margin-top: 2rem;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #2d5a27;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #4CAF50;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+        }
+
+        .contact-info {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            height: fit-content;
+        }
+
+        .contact-info h3 {
+            color: #2d5a27;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .contact-item:last-child {
+            border-bottom: none;
+        }
+
+        .contact-item strong {
+            color: #2d5a27;
+        }
+
+        .contact-item a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background: #2d5a27;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .section {
+                padding: 3rem 0;
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+
+            .section h2 {
+                font-size: 2rem;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .methodology-steps {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="#home" class="logo">Chander Prakash Kamra</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#industries">Industries</a></li>
+                <li><a href="#approach">Approach</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Expert Energy Consulting for Industrial Efficiency</h1>
+            <p>Reduce costs, improve process performance, and unlock energy savings.</p>
+            <div class="cta-buttons">
+                <a href="#contact" class="btn btn-primary">Schedule a Free Consultation</a>
+                <a href="#approach" class="btn btn-secondary">View Sample Audit Scope</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <h2>About Chander Prakash Kamra</h2>
+        <div class="about-content">
+            <p>Chander Prakash Kamra is a seasoned Energy Consultant with expertise across ceramics, textiles, and process industries. His work is grounded in field instrumentation, real-world plant experience, and result-driven strategy.</p>
+            <a href="https://linkedin.com/in/chander-kamra-3b879314" target="_blank" class="btn linkedin-btn">View LinkedIn Profile</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section services">
+        <h2>Services Offered</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>Energy Audits</h3>
+                <p>Process + Utility (SEC benchmarking, loss analysis)</p>
+            </div>
+            <div class="service-card">
+                <h3>Electrical System Analysis</h3>
+                <p>Load, Power Factor, VFDs</p>
+            </div>
+            <div class="service-card">
+                <h3>Waste Heat Recovery</h3>
+                <p>Kiln, Dryer, Flue Gas</p>
+            </div>
+            <div class="service-card">
+                <h3>Implementation Support</h3>
+                <p>Tech specs, ROI, Roadmap</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industries Section -->
+    <section id="industries" class="section">
+        <h2>Industries Served</h2>
+        <div class="industries-grid">
+            <div class="industry-item">Ceramics & Tiles</div>
+            <div class="industry-item">Wood Panels (Plywood, MDF)</div>
+            <div class="industry-item">Textiles & Garments</div>
+            <div class="industry-item">Paper & Pulp</div>
+            <div class="industry-item">Agro & Food Processing</div>
+            <div class="industry-item">Chemicals & Resins</div>
+        </div>
+    </section>
+
+    <!-- Methodology Section -->
+    <section id="approach" class="section methodology">
+        <h2>Audit Methodology</h2>
+        <div class="methodology-steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Pre-Audit Planning</h3>
+                <p>Comprehensive planning and data collection before site visit</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>On-Site Diagnostics</h3>
+                <p>Detailed field measurements and equipment analysis</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>SEC Benchmarking & Analysis</h3>
+                <p>Specific Energy Consumption analysis and benchmarking</p>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <h3>Recommendations with ROI</h3>
+                <p>Actionable recommendations with clear return on investment</p>
+            </div>
+            <div class="step">
+                <div class="step-number">5</div>
+                <h3>Final Report & Roadmap</h3>
+                <p>Comprehensive report with implementation roadmap</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <h2>Projects / Case Study Highlights</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <h3>Ceramic Plant Audits</h3>
+                <p>Comprehensive energy audits across India & Africa for ceramic manufacturing facilities</p>
+            </div>
+            <div class="project-card">
+                <h3>WHR Assessments</h3>
+                <p>Waste Heat Recovery assessments in kiln-based setups for improved efficiency</p>
+            </div>
+            <div class="project-card">
+                <h3>Compressed Air Optimization</h3>
+                <p>Compressed air system optimization in textile units for energy savings</p>
+            </div>
+            <div class="project-card">
+                <h3>Energy Mapping</h3>
+                <p>Energy mapping for resin/chemical plants to identify optimization opportunities</p>
+            </div>
+            <div class="project-card">
+                <h3>SEC Benchmarking</h3>
+                <p>Dryer and Hot Press SEC benchmarking for process optimization</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact">
+        <h2>Contact Chander Prakash Kamra</h2>
+        <div class="contact-container">
+            <div class="contact-form">
+                <form action="mailto:kamracp@gmail.com" method="post" enctype="text/plain">
+                    <div class="form-group">
+                        <label for="name">Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="company">Company</label>
+                        <input type="text" id="company" name="company">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="consent" required>
+                        <label for="consent">I agree to the processing of my personal data for consultation purposes.</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+            <div class="contact-info">
+                <h3>Get in Touch</h3>
+                <div class="contact-item">
+                    <strong>Email:</strong><br>
+                    <a href="mailto:kamracp@gmail.com">kamracp@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <strong>Phone:</strong><br>
+                    <a href="tel:+919819536221">+91-9819536221</a>
+                </div>
+                <div class="contact-item">
+                    <strong>Location:</strong><br>
+                    Chandigarh, India
+                </div>
+                <div class="contact-item">
+                    <strong>LinkedIn:</strong><br>
+                    <a href="https://linkedin.com/in/chander-kamra-3b879314" target="_blank">linkedin.com/in/chander-kamra-3b879314</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Chander Prakash Kamra | All Rights Reserved</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission handling
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! I will get back to you soon.');
+        });
+
+        // Mobile menu toggle (basic implementation)
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+    </script>
+</body>
+</html>
